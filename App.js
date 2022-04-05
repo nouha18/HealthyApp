@@ -20,42 +20,38 @@ import {
   Text,
   useColorScheme,
   View,
+  Plateform,
 } from 'react-native';
-
-import {
-  Colors,
-  Header,
-  LearnMoreLinks,
-} from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
   const [text, setText] = React.useState(' ');
   const [passwordVisible, setPasswordVisible] = React.useState(true);
   const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+ 
+ React.useEffect(()=>{
+   if(Plateform =='ios'){
+     console.log("ios");
+   }else{
+     console.log('android');
+   }
+ },[])
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={styles.backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
+        style={styles.backgroundStyle}>
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white, flex: 1,flexDirection:row,
-            justifycontent:centernt
+            backgroundColor: isDarkMode ? 'black' : 'white', flex: 1,flexDirection:'row',
+            justifycontent:'center',padding:20,margin:10,
           }}>
             <TextInput 
               style={styles.password}
               selectionColor={'pink'}
               placeholder="Password ..."
-               onChangeText={newText => setText(newText)} 
-              
-            />
+              onChangeText={newText => setText(newText)} 
+             />
       </View>
       </ScrollView>
     </SafeAreaView>
@@ -67,26 +63,16 @@ const styles = StyleSheet.create({
   height:50,
   borderRadius: 10,
   width:320,
-  cursor: "pointer",
   lineHeight: 2,
-borderWidth:1,
-borderColor:'#127bcc'},
-sectionContainer: {
+  borderWidth:1,
+  borderColor:'#127bcc'},
+  sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  backgroundStyle:{
+    marging:20,
+  }
 });
 
 export default App;
