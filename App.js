@@ -12,10 +12,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   SafeAreaView,
   ScrollView,
+  Image,
+  Text,
   StatusBar,
   TextInput,
   StyleSheet,
@@ -24,9 +26,9 @@ import {
   Button,
   Plateform,
 } from 'react-native';
-
+import logo from './handy.png';
 const Stack = createNativeStackNavigator();
-
+const Tab = createBottomTabNavigator();
 function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -48,7 +50,7 @@ function LogoTitle() {
   return (
     <Image
       style={{ width: 50, height: 50 }}
-      source={require('@expo/snack-static/react-native-logo.png')}
+      source={require('./handy.png')}
     />
   );
 }
