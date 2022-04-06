@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
@@ -10,36 +11,42 @@
  */
 
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   SafeAreaView,
   ScrollView,
   Image,
   Text,
+  TouchableOpacity,
   StatusBar,
   TextInput,
   StyleSheet,
   useColorScheme,
   View,
   Button,
+  Dimensions,
   Plateform,
 } from 'react-native';
 import logo from './handy.png';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const {width,height} = Dimensions.get('screen');
+
+
+
+
+
+
 function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
-      <Button
-        title="Go to Home... again"
-        onPress={() => navigation.navigate('Home')}
-      />
-         <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      <Button
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+    <Text style={styles.button}>Home</Text>
+     </TouchableOpacity>
+     <Button
         title="Go back to first screen in stack"
         onPress={() => navigation.popToTop()}
       />
@@ -58,9 +65,8 @@ function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
-
-  
-<Button
+ 
+       <Button
         title="Go to Details"
         onPress={() =>     navigation.navigate('Profile', {
           screen: 'DetailsSCreen',
@@ -79,16 +85,16 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Details')}
       />
       
-      <Button
+<Button
   title="Update the title"
   onPress={() => navigation.setOptions({ title: 'Updated!' })}
 />
-            <Button
+<Button
   title="Go to Profile.."
   onPress={() => navigation.push('Profile')}
 />
-    </View>
-  );
+</View>
+);
 }
 function Profile() {
   return (
@@ -104,9 +110,9 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
  
  React.useEffect(()=>{
-   if(Plateform == 'ios'){
-     console.log("ios");
-   } else{
+   if (Plateform == 'ios') {
+     console.log('ios');
+   } else {
      console.log('android');
    }
  },[])
@@ -176,8 +182,8 @@ const styles = StyleSheet.create({
   borderWidth:1,
   borderColor:'#127bcc'},
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  marginTop: 32,
+  paddingHorizontal: 24,
   },
   backgroundStyle:{
     marging:20,
