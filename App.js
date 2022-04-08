@@ -35,10 +35,6 @@ const Tab = createBottomTabNavigator();
 const {width,height} = Dimensions.get('screen');
 
 
-
-
-
-
 function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -46,10 +42,7 @@ function DetailsScreen({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
     <Text style={styles.button}>Home</Text>
      </TouchableOpacity>
-     <Button
-        title="Go back to first screen in stack"
-        onPress={() => navigation.popToTop()}
-      />
+ 
     </View>
   );
 }
@@ -80,10 +73,7 @@ function HomeScreen({ navigation }) {
         
         }
       />
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
+    
       
 <Button
   title="Update the title"
@@ -122,7 +112,7 @@ const App = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.backgroundStyle}>
-        <View
+      <View
           style={{
             backgroundColor: isDarkMode ? 'black' : 'white', flex: 1,flexDirection:'row',
             justifycontent:'center',padding:20,margin:10,
@@ -134,13 +124,12 @@ const App = () => {
               onChangeText={newText => setText(newText)} 
              />
       </View>
-
       </ScrollView>
       <NavigationContainer>
       <Stack.Navigator 
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#f4511e',
+        backgroundColor: '#f4511e',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
@@ -166,8 +155,6 @@ const App = () => {
           },
         }} />
         <Stack.Screen name="Details" component={DetailsScreen}  options={({ route }) => ({ title: route.params.name })} />
-        <Stack.Screen name="Profile" component={Profile}  options={({ route }) => ({ title: route.params.name })} />
-  
       </Stack.Navigator>
     </NavigationContainer>
     </SafeAreaView>
