@@ -63,7 +63,7 @@
    return (
      <Image
        style={{ width: 50, height: 50 }}
-       source={require('./handy.png')}
+       source={require('./launchicon.png')}
      />
    );
  }
