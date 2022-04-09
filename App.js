@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable comma-dangle */
 /* eslint-disable eqeqeq */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-trailing-spaces */
@@ -12,7 +14,7 @@
 
  import React from 'react';
  import { useNavigation, NavigationContainer } from '@react-navigation/native';
- import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+ //import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
  import {
    SafeAreaView,
@@ -31,14 +33,10 @@
  } from 'react-native';
  import logo from './handy.png';
  const Stack = createNativeStackNavigator();
- const Tab = createBottomTabNavigator();
+ //const Tab = createBottomTabNavigator();
  const {width,height} = Dimensions.get('screen');
  
- 
- 
- 
- 
- 
+  
  function DetailsScreen({ navigation }) {
    return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -117,11 +115,10 @@
     } else {
       console.log('android');
     }
-  },[])
+  },[]);
    return (
- 
-        <NavigationContainer>
-       <Tab.Navigator 
+     <NavigationContainer>
+       <Stack.Navigator 
        screenOptions={{
          title:'header',
          headerStyle: {
@@ -132,11 +129,11 @@
            fontWeight: 'bold',
          },
        }}>
-         <Tab.Screen name="Home" component={HomeScreen}   options={{
+         <Stack.Screen name="Home" component={HomeScreen}   options={{
            title: 'Myhome',
            headerStyle: {
              backgroundColor: '#127741',
-             color:'#000'
+              color:'#000'
            },
            headerTitle: (props) => <LogoTitle {...props} />,
            headerRight: () => (
@@ -152,17 +149,17 @@
              height:50,
            },
          }} />
-       <Tab.Screen name="Details" component={DetailsScreen}  options={{
+       <Stack.Screen name="Details" component={DetailsScreen}  options={{
            title: 'Details',
            headerStyle: {
              backgroundColor: '#125741',
            },}} />
-            <Tab.Screen name="Profile" component={Profile}  options={{
+            <Stack.Screen name="Profile" component={Profile}  options={{
            title: 'Profile',
            headerStyle: {
              backgroundColor: '#125741',
            },}} />
-       </Tab.Navigator>
+       </Stack.Navigator>
      </NavigationContainer>
  
    );
@@ -185,4 +182,3 @@
  });
  
  export default App;
- 
