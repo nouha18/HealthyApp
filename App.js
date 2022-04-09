@@ -16,6 +16,7 @@
  import { useNavigation, NavigationContainer } from '@react-navigation/native';
  //import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
+ import { createDrawerNavigator } from '@react-navigation/drawer';
  import {
    SafeAreaView,
    ScrollView,
@@ -35,7 +36,22 @@
  const Stack = createNativeStackNavigator();
  //const Tab = createBottomTabNavigator();
  const {width,height} = Dimensions.get('screen');
- 
+ const Drawer = createDrawerNavigator();
+ function Feed() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Feed Screen</Text>
+    </View>
+  );
+}
+
+function Article() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Article Screen</Text>
+    </View>
+  );
+}
   
  function DetailsScreen({ navigation }) {
    return (
@@ -104,6 +120,14 @@
  );
  }
  
+ function MyDrawer() {
+  return (
+    <Drawer.Navigator useLegacyImplementation>
+      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen name="Article" component={Article} />
+    </Drawer.Navigator>
+  );
+}
  const App = ({navigation}) => {
    const [text, setText] = React.useState(' ');
    const [passwordVisible, setPasswordVisible] = React.useState(true);
@@ -118,48 +142,8 @@
   },[]);
    return (
      <NavigationContainer>
-       <Stack.Navigator 
-       screenOptions={{
-         title:'header',
-         headerStyle: {
-           backgroundColor: '#f4511e',
-         },
-         headerTintColor: '#fff',
-         headerTitleStyle: {
-           fontWeight: 'bold',
-         },
-       }}>
-         <Stack.Screen name="Home" component={HomeScreen}   options={{
-           title: 'Myhome',
-           headerStyle: {
-             backgroundColor: '#127741',
-              color:'#000'
-           },
-           headerTitle: (props) => <LogoTitle {...props} />,
-           headerRight: () => (
-             <Button
-               onPress={() => alert('Setting Page')}
-               title="Info"
-               color="#000"
-           />
-           ),
-           headerTintColor: '#127456',
-           headerTitleStyle: {
-             fontWeight: 'bold',
-             height:50,
-           },
-         }} />
-       <Stack.Screen name="Details" component={DetailsScreen}  options={{
-           title: 'Details',
-           headerStyle: {
-             backgroundColor: '#125741',
-           },}} />
-            <Stack.Screen name="Profile" component={Profile}  options={{
-           title: 'Profile',
-           headerStyle: {
-             backgroundColor: '#125741',
-           },}} />
-       </Stack.Navigator>
+   <MyDrawer/>
+      
      </NavigationContainer>
  
    );
