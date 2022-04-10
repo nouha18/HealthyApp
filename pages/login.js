@@ -165,4 +165,4 @@ const Login = () => {
   );
 }
 export default Login;
-//npm install --save-dev "babel-core@^7.0.0-bridge.0"
+//npm install --save-dev "babel-core@^7.0.0-bridge.0" 

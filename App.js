@@ -13,6 +13,7 @@
  */
 
  import React from 'react';
+ import {onFacebookButtonPress} from './pages/GooGLELogin.js';
  import { useNavigation, NavigationContainer } from '@react-navigation/native';
  //import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -122,12 +123,14 @@ function Article() {
  
  function MyDrawer() {
   return (
-    <Drawer.Navigator useLegacyImplementation>
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Article" component={Article} />
-    </Drawer.Navigator>
+    // <Drawer.Navigator useLegacyImplementation>
+    //   <Drawer.Screen name="Feed" component={Feed} />
+    //   <Drawer.Screen name="Article" component={Article} />
+    // </Drawer.Navigator>
+    <onFacebookButtonPress/>
   );
 }
+onFacebookButtonPress
  const App = ({navigation}) => {
    const [text, setText] = React.useState(' ');
    const [passwordVisible, setPasswordVisible] = React.useState(true);
