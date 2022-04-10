@@ -44,7 +44,7 @@ const defaultAuthState = {
   refreshToken: ''
 };
 
-const App = () => {
+const Login = () => {
   const [authState, setAuthState] = useState(defaultAuthState);
   React.useEffect(() => {
     prefetchConfiguration({
@@ -164,3 +164,5 @@ const App = () => {
     </View>
   );
 }
+export default Login;
+//npm install --save-dev "babel-core@^7.0.0-bridge.0"
